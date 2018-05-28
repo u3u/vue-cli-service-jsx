@@ -1,0 +1,15 @@
+anguage: node_js
+
+node_js: 9
+
+install:
+  - yarn
+
+script:
+  - yarn lint
+  - yarn lint:prettier
+
+cache:
+  yarn: true
+  directories:
+    - node_modules

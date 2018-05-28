@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lint:prettier": "prettier-eslint-check \"**/*.{ts,tsx,js,jsx,json,scss,md}\"",
+    "format": "prettier-eslint \"**/*.{ts,tsx,js,jsx,json,scss,md}\" --write"
   },
   "dependencies": {
     "vue": "^2.5.16",
@@ -21,8 +23,12 @@
     "@vue/eslint-config-typescript": "^3.0.0-beta.11",
     "lint-staged": "^6.0.0",
     "node-sass": "^4.9.0",
+    "prettier": "^1.13.0",
+    "prettier-eslint-check": "^1.0.1",
+    "prettier-eslint-cli": "^4.7.1",
     "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.5.16",
+    "vue-tsx-support": "^1.2.1"
   },
   "browserslist": [
     "> 1%",
@@ -33,12 +39,12 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
+    "*.{ts,tsx,js,jsx}": [
       "vue-cli-service lint",
       "git add"
     ],
-    "*.vue": [
-      "vue-cli-service lint",
+    "*.{ts,tsx,js,jsx,json,scss,md}": [
+      "prettier-eslint --write",
       "git add"
     ]
   }
